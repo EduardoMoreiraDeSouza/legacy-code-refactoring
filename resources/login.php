@@ -7,14 +7,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<?=BASE_URL;?>/assets/css/style-login.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/style-login.css">
     <title>Danki Code Financeiro</title>
 </head>
 <body>
     <div class="container">
         <div class="box-login">
             <h2>DankiCode Financeiro</h2>
-            <form action="<?=BASE_URL?>/entrar" method="post">
+            <form action="<?php echo BASE_URL; ?>/entrar" method="post">
                 <div class="group">
                     <label for="login">Login</label>
                     <input type="text" name="login" id="login">
@@ -25,12 +25,12 @@
                 </div>
                 <div class="group">
                     <button type="submit" class="btn btn-success">Entrar</button>
-                </div> 
-                <?php if (!empty($msg)): ?>
+                </div>
+                <?php if (!empty($msg)) { ?>
                     <div class="group">
-                        <div class="alert alert-danger"><?=$msg?></div>
-                    </div>  
-                <?php endif;?>
+                        <div class="alert alert-danger"><?php echo $msg; ?></div>
+                    </div>
+                <?php }?>
             </form>
         </div>
     </div>

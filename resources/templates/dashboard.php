@@ -16,8 +16,8 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
     <!-- Custom CSS -->
-   <link href="<?=BASE_URL;?>/assets/css/style.min.css" rel="stylesheet">
-   <?=$this->section('styles')?>
+   <link href="<?php echo BASE_URL; ?>/assets/css/style.min.css" rel="stylesheet">
+   <?php echo $this->section('styles'); ?>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -86,13 +86,13 @@
                     <!-- Right side toggle and nav items -->
                     <!-- ============================================================== -->
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
-                        
+
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li>
                             <a class="profile-pic" href="#">
-                                <span class="text-white font-medium">Usuário: <?= ucfirst($_SESSION['login']);?></span></a>
+                                <span class="text-white font-medium">Usuário: <?php echo ucfirst($_SESSION['login']); ?></span></a>
                         </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
@@ -115,28 +115,28 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?=BASE_URL;?>/"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL; ?>/"
                                 aria-expanded="false">
                                 <i class="far fa-clock" aria-hidden="true"></i>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?=BASE_URL;?>/usuario"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL; ?>/usuario"
                                 aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <span class="hide-menu">Usuário</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?=BASE_URL;?>/despesa"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL; ?>/despesa"
                                 aria-expanded="false">
                                 <i class="fas fa-donate" aria-hidden="true"></i>
                                 <span class="hide-menu">Despesa</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?=BASE_URL;?>/logout"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL; ?>/logout"
                                 aria-expanded="false">
                                 <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
                                 <span class="hide-menu">Sair</span>
@@ -162,12 +162,12 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title"><?=$this->e($title);?></h4>
+                        <h4 class="page-title"><?php echo $this->e($title); ?></h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
                             <ol class="breadcrumb ms-auto">
-                                <li><a href="#" class="fw-normal"><?=$this->e($subtitle);?></a></li>
+                                <li><a href="#" class="fw-normal"><?php echo $this->e($subtitle); ?></a></li>
                             </ol>
                         </div>
                     </div>
@@ -182,7 +182,7 @@
             <!-- ============================================================== -->
 
             <div class="container-fluid">
-                <?=$this->section('content')?>
+                <?php echo $this->section('content'); ?>
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
@@ -207,17 +207,17 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="<?=BASE_URL;?>/assets/js/plugins/jquery/dist/jquery.min.js"></script>
+    <script src="<?php echo BASE_URL; ?>/assets/js/plugins/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="<?=BASE_URL;?>/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="<?=BASE_URL;?>/assets/js/app-style-switcher.js"></script>
+    <script src="<?php echo BASE_URL; ?>/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo BASE_URL; ?>/assets/js/app-style-switcher.js"></script>
     <!--Wave Effects -->
-    <script src="<?=BASE_URL;?>/assets/js/waves.js"></script>
+    <script src="<?php echo BASE_URL; ?>/assets/js/waves.js"></script>
     <!--Menu sidebar -->
-    <script src="<?=BASE_URL;?>/assets/js/sidebarmenu.js"></script>
+    <script src="<?php echo BASE_URL; ?>/assets/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
-    <script src="<?=BASE_URL;?>/assets/js/custom.js"></script>
-    <?=$this->section('scripts')?>
+    <script src="<?php echo BASE_URL; ?>/assets/js/custom.js"></script>
+    <?php echo $this->section('scripts'); ?>
 </body>
 
 </html>

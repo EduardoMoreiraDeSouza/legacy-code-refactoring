@@ -3,7 +3,8 @@
 namespace App\Controllers;
 
 use App\Http\Controller;
-use App\Database\MySQL;
+use App\Models\Usuario;
+use App\Models\Validation;
 
 class LoginController extends Controller
 {
@@ -13,36 +14,18 @@ class LoginController extends Controller
     }
 
     public function logIn()
-    {   $data = [];
-        $login = @$_POST['login'];
-        $senha = @$_POST['senha'];
+    {
+        $data = [];
+        $login = filter_input(INPUT_POST, 'login');
+        $senha = filter_input(INPUT_POST, 'senha');
 
-        $sql = "SELECT * FROM usuario WHERE `login` = :login";
-        $query = MySQL::getInstancia()->prepare($sql);
-        $query->bindValue(':login',$login);
-        $query->execute();
-        if ($query->rowCount() > 0) {
-            $dados = $query->fetch();
-            if (password_verify($senha,$dados['senha'])) {
-                $_SESSION['id'] = $dados['id'];
-                $_SESSION['login'] = $dados['login'];
-                header('Location:'.BASE_URL);die();
-            } else {
-                $data['msg'] = "Usuário e/ou senha invalido";
-            }
-        } else {
-            $data['msg'] = "Usuário e/ou senha invalido";
-        }
-        
-        $this->render('login',$data);
+        $usuario = new Usuario();
+        $data['msg'] = $usuario->login($login, $senha);
+
+        $this->render('login', $data);
     }
 
-    public function logout()
-    {
-        if (!empty($_SESSION['id'])) {
-            unset($_SESSION['id']);
-            unset($_SESSION['login']);
-            header('Location:'.BASE_URL);die();
-        }
+    public function logOut() {
+        $this->destroySession();
     }
 }

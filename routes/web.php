@@ -1,9 +1,9 @@
 <?php
 
+use App\Controllers\DespesaController;
 use App\Controllers\HomeController;
-use App\Controllers\UsuarioController;
-use App\Controllers\DespesaController; 
 use App\Controllers\LoginController;
+use App\Controllers\UsuarioController;
 
 $app->get('/', HomeController::class.':index');
 $app->get('/usuario', UsuarioController::class.':index');
@@ -16,5 +16,5 @@ $app->get('/excluir-despesa/{id}', DespesaController::class.':delete');
 $app->get('/pagamento-despesa/{id}', DespesaController::class.':pagamento');
 
 $app->get('/login', LoginController::class.':index');
-$app->post('/entrar',LoginController::class.':logIn');
-$app->get('/logout', LoginController::class.':logout');
+$app->post('/entrar', LoginController::class.':logIn');
+$app->get('/logout', LoginController::class.':logOut');

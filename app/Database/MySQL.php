@@ -4,16 +4,19 @@ namespace App\Database;
 
 class MySQL
 {
-    private static $instancia = null;
+    private static $instancia;
 
-    public static function getInstancia() 
+    public static function getInstancia()
     {
-        if (self::$instancia == null) {
-            self::$instancia = new \PDO('mysql:dbname=dc_financeiro;host=mysql','root','root',array(
-                \PDO::ATTR_ERRMODE, 
-                \PDO::ERRMODE_EXCEPTION,
-                \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
-            ));
+        if (null === self::$instancia) {
+            self::$instancia = new \PDO(
+                'mysql:dbname=dc_financeiro;host=localhost;charset=utf8',
+                'root',
+                '',
+                [
+                    \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+                ]
+            );
         }
 
         return self::$instancia;

@@ -1,3 +1,3 @@
 <?php
 
-define('BASE_URL','http://localhost:8000');
+define('BASE_URL', 'http://legacy-code-refactoring.test');

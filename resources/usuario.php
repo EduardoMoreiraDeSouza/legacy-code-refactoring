@@ -1,16 +1,16 @@
-<?php $this->layout('templates/dashboard',['title'=>'Usuário','subtitle'=>'Cadastro']) ?>
+<?php $this->layout('templates/dashboard', ['title' => 'Usuário', 'subtitle' => 'Cadastro']); ?>
 
 <div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-                <?php if (!empty($error)):?>
+                <?php if (!empty($error)) { ?>
                     <div class="alert alert-danger alert-dismissible fade show">
-                        <span><?=$error;?></span>
+                        <span><?php echo $error; ?></span>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                <?php endif; ?>
-                <form class="form-horizontal form-material" action="<?=BASE_URL;?>/cad-usuario" method="POST" autocomplete="off">
+                <?php } ?>
+                <form class="form-horizontal form-material" action="<?php echo BASE_URL; ?>/cad-usuario" method="POST" autocomplete="off">
                     <div class="form-group mb-4">
                         <label class="col-md-12 p-0" for="nome">Nome Completo</label>
                         <div class="col-md-12 border-bottom p-0">
@@ -44,7 +44,7 @@
                                 class="form-control p-0 border-0">
                         </div>
                     </div>
-                    
+
                     <div class="form-group mb-4">
                         <div class="col-sm-12">
                             <button class="btn btn-success">Salvar</button>
