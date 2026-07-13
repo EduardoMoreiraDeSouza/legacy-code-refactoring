@@ -3,15 +3,15 @@
 namespace App\Controllers;
 
 use App\Http\Controller;
-use App\Models\Despesa;
+use App\Models\Usuario;
 
 class UsuarioController extends Controller
 {
     public function __construct()
     {
-        parent::__construct();
+        parent ::__construct();
         if (empty($_SESSION['id'])) {
-            header('Location:'.BASE_URL.'/login');
+            header('Location:' . BASE_URL . '/login');
 
             exit;
         }
@@ -24,7 +24,7 @@ class UsuarioController extends Controller
             $data['error'] = $_SESSION['error'];
             unset($_SESSION['error']);
         }
-        $this->render('usuario', $data);
+        $this -> render('usuario', $data);
     }
 
     public function create()
@@ -35,22 +35,22 @@ class UsuarioController extends Controller
         $senha = password_hash(@$_POST['senha'], PASSWORD_DEFAULT);
         $celular = @$_POST['celular'];
         if (!empty($nome) && !empty($email) && !empty($login) && !empty($senha)) {
-            $usuario = new Despesa();
-            $bool = $usuario->adicionarUsuario($nome, $email, $login, $senha, $celular);
+            $usuario = new Usuario();
+            $bool = $usuario -> adicionarUsuario($nome, $email, $login, $senha, $celular);
 
             if (!$bool) {
                 $_SESSION['error'] = 'Verifica todos os campos';
-                header('Location:'.BASE_URL.'/usuario');
+                header('Location:' . BASE_URL . '/usuario');
 
                 exit;
             }
             unset($_SESSION['error']);
-            header('Location:'.BASE_URL.'/usuario');
+            header('Location:' . BASE_URL . '/usuario');
 
             exit;
         }
         $_SESSION['error'] = 'Precisa preencher todos os campos';
-        header('Location:'.BASE_URL.'/usuario');
+        header('Location:' . BASE_URL . '/usuario');
 
         exit;
     }

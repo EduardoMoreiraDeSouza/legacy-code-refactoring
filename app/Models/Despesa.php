@@ -48,19 +48,7 @@ class Despesa
         }
     }
 
-    public function adicionarUsuario($nome, $email, $login, $senha, $celular)
-    {
-        $sql = "INSERT INTO usuario (nome_completo,email,login,senha,telefone)
-        VALUES ('{$nome}','{$email}','{$login}','{$senha}','{$celular}')";
-        $query = MySQL::getInstancia()->prepare($sql);
-        $query->execute();
-        $id = MySQL::getInstancia()->lastInsertId();
-        if ($id) {
-            return true;
-        }
 
-        return false;
-    }
 
     public function formaDePagamento()
     {

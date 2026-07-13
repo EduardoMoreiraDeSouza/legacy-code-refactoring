@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Http\Controller;
 use App\Models\Usuario;
-use App\Models\Validation;
 
 class LoginController extends Controller
 {
@@ -25,7 +24,8 @@ class LoginController extends Controller
         $this->render('login', $data);
     }
 
-    public function logOut() {
+    public function logOut()
+    {
         $this->destroySession();
     }
 }
