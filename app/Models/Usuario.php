@@ -22,7 +22,7 @@ class Usuario
             $dados = $query -> fetch();
             if (password_verify($senha, $dados['senha'])) {
                 $_SESSION['id'] = $dados['id'];
-                $_SESSION['login'] = $dados['login'];
+                $_SESSION['usuario_logado'] = $dados['login'];
                 $this -> redirect('home');
 
                 exit;
@@ -37,7 +37,7 @@ class Usuario
         string $email,
         string $login,
         string $senha,
-        string $celular
+        string $telefone
     ): bool {
         $sql = 'INSERT INTO usuario (nome_completo, email, login, senha, telefone)
         VALUES (:nome, :email, :login, :senha, :celular);';
@@ -48,7 +48,7 @@ class Usuario
         $query -> bindValue(':email', $email);
         $query -> bindValue(':login', $login);
         $query -> bindValue(':senha', $senha);
-        $query -> bindValue(':celular', $celular);
+        $query -> bindValue(':celular', $telefone);
 
         return $query -> execute();
     }

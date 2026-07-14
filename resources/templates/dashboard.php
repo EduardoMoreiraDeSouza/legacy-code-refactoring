@@ -92,7 +92,7 @@
                         <!-- ============================================================== -->
                         <li>
                             <a class="profile-pic" href="#">
-                                <span class="text-white font-medium">Usuário: <?php echo ucfirst($_SESSION['login']); ?></span></a>
+                                <span class="text-white font-medium">Usuário: <?php echo ucfirst($_SESSION['usuario_logado']); ?></span></a>
                         </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->

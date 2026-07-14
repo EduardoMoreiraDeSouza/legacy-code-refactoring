@@ -20,38 +20,32 @@ class UsuarioController extends Controller
     public function index()
     {
         $data = [];
-        if (!empty($_SESSION['error'])) {
-            $data['error'] = $_SESSION['error'];
-            unset($_SESSION['error']);
-        }
+        $data['msg'] = $this->flashMensagem();
+        $data['old'] = $this->getDadosPost();
         $this -> render('usuario', $data);
     }
 
     public function create()
     {
-        $nome = @$_POST['nome'];
-        $email = @$_POST['email'];
-        $login = @$_POST['login'];
-        $senha = password_hash(@$_POST['senha'], PASSWORD_DEFAULT);
-        $celular = @$_POST['celular'];
-        if (!empty($nome) && !empty($email) && !empty($login) && !empty($senha)) {
+        $this -> validarDados([
+            'nome' => 'required',
+            'email' => 'required',
+            'login' => 'required',
+            'senha' => 'required',
+            'telefone' => '',
+        ]);
+
+        if (!$this -> validarTemError()) {
             $usuario = new Usuario();
-            $bool = $usuario -> adicionarUsuario($nome, $email, $login, $senha, $celular);
-
-            if (!$bool) {
-                $_SESSION['error'] = 'Verifica todos os campos';
-                header('Location:' . BASE_URL . '/usuario');
-
-                exit;
-            }
-            unset($_SESSION['error']);
-            header('Location:' . BASE_URL . '/usuario');
-
-            exit;
+            $usuario -> adicionarUsuario(
+                nome: $_POST['nome'],
+                email: $_POST['email'],
+                login: $_POST['login'],
+                senha: $_POST['senha'],
+                telefone: $_POST['telefone']
+            );
         }
-        $_SESSION['error'] = 'Precisa preencher todos os campos';
-        header('Location:' . BASE_URL . '/usuario');
 
-        exit;
+        $this-> redirect('usuario');
     }
 }
